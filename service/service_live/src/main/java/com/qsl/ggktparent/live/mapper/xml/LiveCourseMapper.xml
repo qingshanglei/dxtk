@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qsl.ggktparent.live.mapper.LiveCourseMapper">
+
+    <resultMap id="liveCourseMap" type="com.qsl.ggktparent.vo.live.LiveCourseVo" autoMapping="true"></resultMap>
+
+    <!--  <![CDATA[ <=  ]]>    LIMIT #{page} , #{limit}     -->
+    <select id="findLatelyList" resultMap="liveCourseMap">
+        SELECT *
+        FROM live_course
+        WHERE DATE(start_time) &lt; CURDATE()
+        ORDER BY id ASC
+    </select>
+</mapper>
